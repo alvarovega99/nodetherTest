@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { registerUser } from "../redux/actions/actions";
+import Swal from "sweetalert2";
+import { useNavigate } from 'react-router-dom'
 
 export default function UserRegister() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [state, setState] = useState({
     email: "",
     password: "",
@@ -15,8 +19,24 @@ export default function UserRegister() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    alert(`You are logged in as ${state.email}`);
+    dispatch(registerUser(state)).then((res) => {
+      if (res.payload.message === "OK") {
+        Swal.fire({
+          title: "Success",
+          text: "You have successfully registered",
+          icon: "success",
+          confirmButtonText: "OK",
+        });
+        navigate('/')
+      } else {
+        Swal.fire({
+          title: "Error",
+          text: "Something went wrong",
+          icon: "error",
+          confirmButtonText: "OK",
+        });
+      }
+    });
   };
 
   return (
@@ -37,6 +57,7 @@ export default function UserRegister() {
         onChange={(e) => handleChange(e)}
       />
       <button onClick={() => handleSubmit()}>Sing-up</button>
+      <button onClick={() =>navigate('/')}>LogIn</button>
     </div>
   );
 }

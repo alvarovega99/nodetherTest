@@ -11,7 +11,7 @@ export const GET_POST = "GET_POST";
 export const DELETE_POST = "DELETE_POST";
 export const UPDATE_LIKES = "UPDATE_LIKES";
 export const UPDATE_DISLIKES = "UPDATE_DISLIKES";
-
+export const SET_MESSAGE = "SET_MESSAGE";
 const url = process.env.REACT_APP_BASE_URL;
 
 export function loginUser({ email, password }) {
@@ -89,7 +89,7 @@ export function getPostById(id) {
     };
 }
 
-export function getAllPost(id) {
+export function getAllPost() {
     return async (dispatch) => {
       try {
         const json = await axios.get(`${url}/posts/search-all-post`);
@@ -143,6 +143,12 @@ export function updateDislikes(id) {
         return Promise.reject(error);
       }
     };
+}
+
+export function setMessage() {
+  return {
+    type: SET_MESSAGE,
+  };
 }
 
 export function signOut() {
