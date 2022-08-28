@@ -1,8 +1,8 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom'
-import Login from './components/Login'
-import Home from './components/Home'
+import Login from '../../client/src/components/Login'
+import Home from '../../client/src/components/Home'
 import UserRegister from './components/UserRegister';
 import {useSelector} from 'react-redux'
 function App() {

@@ -1,10 +1,9 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { signOut } from "../redux/actions/actions";
 export default function Nav({ user }) {
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     function logout() {
         dispatch(signOut()).then(() => {
             window.location.reload();
