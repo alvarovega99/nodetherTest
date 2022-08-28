@@ -1,7 +1,7 @@
 import React,{ useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Nav from "./nav";
-import AllPosts from "./allPosts";
+import AllPosts from "./allPost";
 import PostCreate from "./postCreate";
 import { getAllPost } from "../redux/actions/actions";
 export default function Home() {
