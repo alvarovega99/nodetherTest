@@ -1,8 +1,8 @@
 import React,{ useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Nav from "./Nav";
-import AllPosts from "./AllPosts";
-import PostCreate from "./PostCreate";
+import Nav from "./nav";
+import AllPosts from "./allPosts";
+import PostCreate from "./postCreate";
 import { getAllPost } from "../redux/actions/actions";
 export default function Home() {
     const user = useSelector((state) => state.userLogued);

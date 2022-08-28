@@ -1,9 +1,9 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom'
-import Login from '../../client/src/components/Login'
-import Home from '../../client/src/components/Home'
-import UserRegister from './components/UserRegister';
+import Login from './components/login'
+import Home from './components/home'
+import UserRegister from './components/userRegister';
 import {useSelector} from 'react-redux'
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { registerUser } from "../redux/actions/actions";
 import Swal from "sweetalert2";
 import { useNavigate } from 'react-router-dom'
