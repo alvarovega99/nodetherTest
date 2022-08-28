@@ -2,14 +2,12 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { signOut } from "../redux/actions/actions";
-import { useNavigate } from 'react-router-dom'
 
 export default function Nav() {
-    const navigate = useNavigate();
     const dispatch = useDispatch();
     function logout() {
         dispatch(signOut());
-        navigate('/')
+        window.location.reload(false)
     }
     return (
         <div className="nav-container">

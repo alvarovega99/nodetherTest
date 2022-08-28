@@ -1,8 +1,33 @@
-import React from "react";
-import { updateDislikes, updateLikes } from "../redux/actions/actions";
+import React, { useState }from "react";
+import { updateDislikes, updateLikes, getPostById } from "../redux/actions/actions";
 import { useDispatch } from "react-redux";
 export default function Post({id, description, image, user, likes, dislikes}) {
   const dispatch = useDispatch();
+  const [likesState, setLikesState] = useState(likes);
+  const [dislikeState, setdislikeState] = useState(dislikes);
+  const handleLikes = () => {
+    dispatch(updateLikes(id)).then((res) => {
+      if (res.payload.message === "OK") {
+        dispatch(getPostById(id)).then((res) => {
+          setLikesState(res.payload.data.likes);
+        })
+      } else {
+        alert("Something went wrong");
+      }
+    })
+  }
+  const handleDislikes = () => {
+    dispatch(updateDislikes(id)).then((res) => {
+      if (res.payload.message === "OK") {
+        dispatch(getPostById(id)).then((res) => {
+          setdislikeState(res.payload.data.dislikes);
+          console.log(res.payload);
+        })
+      } else {
+        alert("Something went wrong");
+      }
+    })
+  }
   return (
     <div className="post-container">
       <span>{user}</span>
@@ -13,12 +38,12 @@ export default function Post({id, description, image, user, likes, dislikes}) {
         <img src={image} alt={description} />
       </div>
       <div className="like-dislike">
-        <span>{likes}</span>
-        <span>{dislikes}</span>
+        <span>{likesState}</span>
+        <span>{dislikeState}</span>
       </div>
       <div className="like-dislike">
-        <span class="material-symbols-outlined" onClick={ ()=>{ dispatch(updateDislikes(id))}}>thumb_up</span>
-        <span class="material-symbols-outlined" onClick={ ()=>{ dispatch(updateLikes(id))}}>thumb_down</span>
+        <span class="material-symbols-outlined" onClick={ ()=>{ handleLikes() }}>thumb_up</span>
+        <span class="material-symbols-outlined" onClick={ ()=>{ handleDislikes()}}>thumb_down</span>
       </div>
     </div> 
   );

@@ -10,7 +10,7 @@ export default function AllPosts() {
             <div className="all-posts-container">
                 {
                     posts?.map(post => (
-                        <Post key={post.description} description={post.description} image={post.image} id={post.id} user={post.user.email} likes={post.likes} dislikes={post.dislikes}/>
+                        <Post key={post.description} description={post.description} image={post.image} id={post._id} user={post.user.email} likes={post.likes} dislikes={post.dislikes}/>
                     ))
                 }
             </div>
