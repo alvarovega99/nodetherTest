@@ -18,7 +18,12 @@ async function createPostController(req, res) {
         error: "Missing parameters",
       });
     } else {
-      const post = await createPost({ description, image, userId });
+      const searchUser = await getOneUser({ _id: userId });
+      infoUser = {
+        id: searchUser._id,
+        email: searchUser.email,
+      };
+      const post = await createPost({ description, image, user: infoUser });
       res.status(201).json({
         message: "OK",
         post: post,
@@ -37,7 +42,6 @@ async function searchOnePost(req, res) {
   try {
     const { id } = req.params;
     const post = await getOnePost({ _id: id });
-    post.userId;
     if (post !== null) {
       res.status(200).json({
         message: "OK",
@@ -62,20 +66,7 @@ async function searchAllPost(req, res) {
   try {
     const posts = await getAllPosts();
     if (posts !== null) {
-      const response = [];
-      for (let i = 0; i < posts.length; i++) {
-        const user = await getOneUser({ _id: posts[i].userId });
-        response.push({
-          id: posts[i]._id,
-          description: posts[i].description,
-          image: posts[i].image,
-          user: { email: user.email, id: user._id },
-          karma: posts[i].karma,
-          likes: posts[i].likes,
-          dislikes: posts[i].dislikes,
-        });
-      }
-      const sortedPosts = await Promise.all(response).then((posts) => {
+      const sortedPosts = await Promise.all(posts).then((posts) => {
         return posts.sort((a, b) => b.karma - a.karma);
       });
       res.status(200).json({

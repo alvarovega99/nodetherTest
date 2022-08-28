@@ -1,8 +1,8 @@
 const { Schema, model } = require("mongoose");
 const post = new Schema({
   description: String,
-  userId: {
-    type: String,
+  user: {
+    type: Object,
     required: true,
   },
   image: {

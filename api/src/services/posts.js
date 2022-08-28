@@ -5,7 +5,7 @@ async function createPost(objet) {
   const post = new Post({
     description: objet.description,
     image: objet.image,
-    userId: objet.userId,
+    user: objet.user,
   });
   return post.save();
 }
