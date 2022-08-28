@@ -120,7 +120,7 @@ export function deletePost(id) {
 export function updateLikes(id) {
     return async (dispatch) => {
       try {
-        const json = await axios.put(`${url}/posts/update-likes/${id}`);
+        const json = await axios.get(`${url}/posts/update-likes/${id}`);
         return dispatch({
           type: UPDATE_LIKES,
           payload: json.data,
@@ -134,7 +134,7 @@ export function updateLikes(id) {
 export function updateDislikes(id) {
     return async (dispatch) => {
       try {
-        const json = await axios.put(`${url}/posts/update-dislikes/${id}`);
+        const json = await axios.get(`${url}/posts/update-dislikes/${id}`);
         return dispatch({
           type: UPDATE_DISLIKES,
           payload: json.data,
