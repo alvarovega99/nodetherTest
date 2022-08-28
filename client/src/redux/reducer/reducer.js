@@ -33,7 +33,6 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         userLogued: {},
-        message: payload.message,
       };
     case REGISTER_USER:
       return {

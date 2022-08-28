@@ -41,6 +41,10 @@ export default function Login() {
         });
       }
     });
+    setState({
+      description: "",
+      image: "",
+    });
   };
 
   return (

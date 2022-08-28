@@ -5,6 +5,7 @@ import AllPosts from "./AllPosts";
 import PostCreate from "./PostCreate";
 import { getAllPost } from "../redux/actions/actions";
 export default function Home() {
+    const user = useSelector((state) => state.userLogued);
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getAllPost());
@@ -12,7 +13,7 @@ export default function Home() {
 
     return (
         <div className="home-container">
-            <Nav />
+            <Nav user={user.email} />
             <div className="home-content">
                 <PostCreate />
             </div>

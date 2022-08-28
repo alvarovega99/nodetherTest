@@ -17,6 +17,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path='/' element={ isLoggedIn === true ? <Home/> : <Login/> }/>
+        <Route path='/sing-in' element={ isLoggedIn === true ? <Home/> : <Login/> }/>
         <Route path='/register' element={<UserRegister/>}/>
       </Routes>
     </div>

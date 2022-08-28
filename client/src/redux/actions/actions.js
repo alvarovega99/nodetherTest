@@ -152,13 +152,17 @@ export function updateDislikes(id) {
 }
 
 export function setMessage() {
-  return {
-    type: SET_MESSAGE,
+  return async (dispatch) => {
+    dispatch({
+      type: SET_MESSAGE,
+    });
   };
 }
 
 export function signOut() {
-    return {
-      type: SIGN_OUT,
+    return async (dispatch) => {
+      dispatch({
+        type: SIGN_OUT,
+      });
     };
 }
