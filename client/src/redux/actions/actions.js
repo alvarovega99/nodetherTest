@@ -47,7 +47,12 @@ export function registerUser(obj) {
           payload: json.data,
         });
       } catch (error) {
-        return Promise.reject(error);
+        return dispatch({
+          type: REGISTER_USER,
+          payload: {
+            message: error.message,
+          },
+        });
       }
     };
 }
