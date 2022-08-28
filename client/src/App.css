@@ -192,3 +192,16 @@ h1 {
   margin: 0;
   margin-bottom: 1rem;
 }
+.refreshPosts{
+  color: gray;
+  cursor: pointer;
+  border: 1px solid gray;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50vh;
+}

@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { signOut } from "../redux/actions/actions";
-export default function Nav({ user }) {
+export default function Nav({ user, refreshPosts}) {
     const dispatch = useDispatch();
     function logout() {
         dispatch(signOut()).then(() => {
@@ -13,8 +13,9 @@ export default function Nav({ user }) {
     return (
         <div className="nav-container">
             <div className="nav-item">
-            <NavLink to="/" className={isActive => "nav-link" + (!isActive ? " unselected" : "")}>Home</NavLink>   
+            <NavLink to="/" className={isActive => "nav-link" + (!isActive ? " unselected" : "")}>Home</NavLink>  
             </div>
+            <span class="material-symbols-outlined" onClick={ ()=>{ refreshPosts() }}>refresh</span> 
             <div className="nav-item">
                 <h3>{user}</h3>
                 <button onClick={() => { logout() }}>Log Out</button>
