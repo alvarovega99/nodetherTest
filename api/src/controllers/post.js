@@ -13,7 +13,7 @@ async function createPostController(req, res) {
   try {
     const { description, image, userId } = req.body;
     if (!description || !userId) {
-      res.status(400).json({
+      res.status(304).json({
         message: "error",
         error: "Missing parameters",
       });
@@ -48,7 +48,7 @@ async function searchOnePost(req, res) {
         data: post,
       });
     } else {
-      res.status(400).json({
+      res.status(304).json({
         message: "error",
         error: "Post not found",
       });
@@ -74,7 +74,7 @@ async function searchAllPost(req, res) {
         data: sortedPosts,
       });
     } else {
-      res.status(400).json({
+      res.status(200).json({
         message: "OK",
         posts: [],
       });
@@ -100,7 +100,7 @@ async function updateLike(req, res) {
         message: "OK",
       });
     } else {
-      res.status(400).json({
+      res.status(304).json({
         message: "error",
         error: "Post not found",
       });
@@ -134,7 +134,7 @@ async function updateDislike(req, res) {
         });
       }
     } else {
-      res.status(400).json({
+      res.status(304).json({
         message: "error",
         error: "Post not found",
       });

@@ -5,7 +5,7 @@ async function registerUser(req, res) {
   try {
     const { email, password } = req.body;
     if (!email || !password) {
-      res.status(400).json({
+      res.status(304).json({
         message: "error",
         error: "Missing parameters",
       });
@@ -21,7 +21,7 @@ async function registerUser(req, res) {
         },
       });
     } else {
-      res.status(400).json({
+      res.status(304).json({
         message: "error",
         error: "User already exists",
       });

@@ -35,10 +35,10 @@ export default function Login() {
           text: "Something went wrong",
           icon: "error",
           confirmButtonText: "OK",
-        });
+        })
         dispatch(setMessage());
       }
-    });
+    })
   };
 
   return (
